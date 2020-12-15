@@ -9,6 +9,7 @@ bot.once('ready', () => {
     console.log('Im ready!');
 })
 
+// respostas
 bot.on('message', msg => {
     if (!msg.content.startsWith(prefix)) return;
 
@@ -17,7 +18,7 @@ bot.on('message', msg => {
 
     switch (comando) {
         case 'help':
-            msg.channel.send('**prefixo:** `pp` \n**comandos dos membros:** `bitola`, `dezi`, `bife`, `venom`, `bina`, `ryan`, `tiofino` \n**configs:** `convidar`');
+            msg.channel.send('**prefixo:** `pp` \n**comandos dos membros:** `bitola`, `dezi`, `bife`, `venom`, `bina`, `ryan`, `tiofino` \n**configs:** `convidar` \n**comandos secretos: `???`**');
             break;
         case 'bitola':
             numero = Math.floor(Math.random() * 3);
@@ -45,6 +46,7 @@ bot.on('message', msg => {
     }
 });
 
+// configs
 bot.on('message', msg => {
     if (!msg.content.startsWith(prefix)) return;
 
@@ -55,8 +57,26 @@ bot.on('message', msg => {
         case 'convidar':
             msg.channel.send('opa, só me chamar lá ;) \nhttps://discord.com/api/oauth2/authorize?client_id=788178980687708160&permissions=8&scope=bot')
     }
+});
+
+// comandos secretos
+bot.on('message', msg => {
+    if (!msg.content.startsWith(prefix)) return;
+
+    const args = msg.content.slice(prefix.length).trim().split(/ +/);
+    const comando = args.shift().toLowerCase();
+
+    switch (comando) {
+        case 'vsf':
+            msg.reply('vai vc seu arrombado');
+        case 'bonitinho':
+            msg.channel.send({files: ['./img/beirute.png']});
+        case 'turminha':
+            msg.channel.send({files: ['./img/turminha.png']});
+    }
 })
 
+// functions
 function chamarBitola(numero, msg) {
     switch (numero) {
         case 0:
