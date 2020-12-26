@@ -6,7 +6,7 @@ let numero;
 bot.login(token);
 
 bot.once('ready', () => {
-    console.log('Im ready!');
+    console.log('Estou pronto!');
 })
 
 // respostas
@@ -18,7 +18,7 @@ bot.on('message', msg => {
 
     switch (comando) {
         case 'help':
-            msg.channel.send('**prefixo:** `pp` \n**comandos dos membros:** `bitola`, `dezi`, `bife`, `venom`, `bina`, `ryan`, `tiofino` \n**configs:** `convidar` \n**comandos secretos: `???`**');
+            msg.channel.send(help);
             break;
         case 'bitola':
             numero = Math.floor(Math.random() * 3);
@@ -42,6 +42,9 @@ bot.on('message', msg => {
             break;
         case 'tiofino':
             msg.reply('eai mermão');
+            break;
+        case 'beirute':
+            msg.channel.send('minhas costaaasss');
             break;
     }
 });
@@ -69,12 +72,28 @@ bot.on('message', msg => {
     switch (comando) {
         case 'vsf':
             msg.reply('vai vc seu arrombado');
+            break;
         case 'bonitinho':
             msg.channel.send({files: ['./img/beirute.png']});
+            break;
         case 'turminha':
             msg.channel.send({files: ['./img/turminha.png']});
+            break;
     }
 })
+
+//cochichar
+// bot.on('message', msg => {
+//     if (!msg.content.startsWith(prefix)) return;
+
+//     const args = msg.content.slice(prefix.length).trim().split(/ +/);
+//     const comando = args.shift().toLowerCase();
+
+//     switch (comando) {
+//         case 'cochichar':
+//             msg.author.send('eai mermao');
+//     }
+// })
 
 // functions
 function chamarBitola(numero, msg) {
@@ -101,3 +120,14 @@ function chamarRyan(numero, msg) {
             break;
     }
 }
+
+const help = new Discord.MessageEmbed()
+    .setColor('#0099ff')
+    .setTitle('Comandos')
+    .setDescription('Para me chamar use: `pp`')
+    .setThumbnail('https://cdn.discordapp.com/attachments/286230812536602624/788180848473931806/4KmnGQFi5T2AgO9MRBS-T_olcawndBp_Is9Lqhf3C43lQbzIDgpxW5Y1cfMn7Q2-HAENdig6oqPRFyN30PQO4yLJOukHmWQK9rup.png')
+    .addFields(
+        {name: 'Membros:', value: '`bitola`, `dezi`, `bife`, `venom`, `bina`, `ryan`, `tiofino`, `beirute`'},
+        {name: 'Configurações:', value: '`convidar`'},
+        {name: 'Comandos Secretos:', value:'???'}
+    )
